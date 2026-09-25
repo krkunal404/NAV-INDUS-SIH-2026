@@ -1,7 +1,5 @@
 package com.example.myapp.overlay
 
-import android.app.Activity
-import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.GradientDrawable
 import android.os.Bundle
@@ -12,6 +10,8 @@ import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.FrameLayout
+import androidx.activity.ComponentActivity
+import androidx.activity.addCallback
 
 /**
  * A small, transparent activity that only exists to reliably show the
@@ -19,12 +19,19 @@ import android.widget.FrameLayout
  * cannot reliably take keyboard focus. Opens instantly, closes itself
  * once the user submits or taps away.
  */
-class QueryInputActivity : Activity() {
+class QueryInputActivity : ComponentActivity() {
 
     private lateinit var input: EditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        // Stop wake word listener while user is typing to prevent audio focus conflict
+        WakeWordManager.stop()
+
+        onBackPressedDispatcher.addCallback(this) {
+            finish()
+        }
 
         window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_VISIBLE)
 
@@ -39,6 +46,7 @@ class QueryInputActivity : Activity() {
                 cornerRadius = 100f
             }
             setPadding(48, 28, 48, 28)
+            isClickable = true // Prevent clicks on the input box from dismissing the activity
         }
 
         input = EditText(this).apply {
@@ -49,6 +57,8 @@ class QueryInputActivity : Activity() {
             inputType = InputType.TYPE_CLASS_TEXT
             background = null
             isSingleLine = true
+            isFocusable = true
+            isFocusableInTouchMode = true
             requestFocus()
 
             setOnEditorActionListener { _, _, _ ->
@@ -73,22 +83,18 @@ class QueryInputActivity : Activity() {
 
         setContentView(root)
 
-        // Force-show the keyboard shortly after layout, for devices that need the nudge
+        // Force-show the keyboard shortly after layout
         input.postDelayed({
-            val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            val imm = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
             imm.showSoftInput(input, InputMethodManager.SHOW_IMPLICIT)
         }, 150)
     }
 
     private fun submitAndFinish() {
-        val text = input.text.toString()
+        val text = input.text.toString().trim()
         if (text.isNotBlank()) {
             OverlayService.onQuerySubmitted?.invoke(text)
         }
-        finish()
-    }
-
-    override fun onBackPressed() {
         finish()
     }
 }

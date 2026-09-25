@@ -1,10 +1,11 @@
 package com.example.myapp.overlay
 
-import android.animation.ObjectAnimator
+import android.R
 import android.animation.ValueAnimator
 import android.app.*
 import android.content.Context
 import android.content.Intent
+import android.content.pm.ServiceInfo
 import android.graphics.Color
 import android.graphics.PixelFormat
 import android.graphics.drawable.GradientDrawable
@@ -40,6 +41,13 @@ class OverlayService : Service() {
         const val NOTIF_ID = 1001
         var onMicTapped: (() -> Unit)? = null
         var onQuerySubmitted: ((String) -> Unit)? = null
+        private var statusLabelRef: TextView? = null
+
+        fun updateStatus(text: String) {
+            statusLabelRef?.post {
+                statusLabelRef?.text = text
+            }
+        }
 
         // Single calm accent color used throughout the UI
         private const val ACCENT = "#5EC6B8"       // soft teal
@@ -51,8 +59,17 @@ class OverlayService : Service() {
 
     override fun onCreate() {
         super.onCreate()
-        startForeground(NOTIF_ID, buildNotification())
+        startForegroundServiceInternal()
         showPanel()
+    }
+
+    private fun startForegroundServiceInternal() {
+        val notification = buildNotification()
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            startForeground(NOTIF_ID, notification, ServiceInfo.FOREGROUND_SERVICE_TYPE_MICROPHONE)
+        } else {
+            startForeground(NOTIF_ID, notification)
+        }
     }
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
@@ -67,25 +84,20 @@ class OverlayService : Service() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
             WindowManager.LayoutParams.TYPE_APPLICATION_OVERLAY
         else
+            @Suppress("DEPRECATION")
             WindowManager.LayoutParams.TYPE_PHONE
 
     private fun baseFlags() =
         WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE or
                 WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL
 
-    private fun setFocusable(focusable: Boolean) {
-        val params = panelParams ?: return
-        params.flags = if (focusable) {
-            WindowManager.LayoutParams.FLAG_NOT_TOUCH_MODAL
-        } else {
-            baseFlags()
-        }
-        windowManager?.updateViewLayout(panelView, params)
-    }
-
     private fun showPanel() {
         if (panelView != null) return
-        windowManager = getSystemService(Context.WINDOW_SERVICE) as WindowManager
+        if (!OverlayController.hasPermission(this)) {
+            stopSelf()
+            return
+        }
+        windowManager = getSystemService(WINDOW_SERVICE) as WindowManager
 
         val card = LinearLayout(this).apply {
             orientation = LinearLayout.VERTICAL
@@ -111,7 +123,7 @@ class OverlayService : Service() {
         })
 
         val closeBtn = ImageView(this).apply {
-            setImageResource(android.R.drawable.ic_menu_close_clear_cancel)
+            setImageResource(R.drawable.ic_menu_close_clear_cancel)
             setColorFilter(Color.parseColor(TEXT_HINT))
             setPadding(14, 14, 14, 14)
             setOnClickListener { dismiss() }
@@ -149,6 +161,7 @@ class OverlayService : Service() {
             setTextColor(Color.parseColor(TEXT_MAIN))
             textSize = 18f
         }
+        statusLabelRef = statusLabel
         statusRow.addView(statusLabel)
 
         card.addView(
@@ -170,6 +183,12 @@ class OverlayService : Service() {
             start()
         }
 
+        val openInputQuery = {
+            val intent = Intent(this@OverlayService, QueryInputActivity::class.java)
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            startActivity(intent)
+        }
+
         // --- Input row: mic icon + text field ---
         val inputRow = LinearLayout(this).apply {
             orientation = LinearLayout.HORIZONTAL
@@ -179,10 +198,12 @@ class OverlayService : Service() {
                 setColor(Color.parseColor("#2A2E36"))
                 cornerRadius = 100f
             }
+            isClickable = true
+            setOnClickListener { openInputQuery() }
         }
 
         val micBtn = ImageView(this).apply {
-            setImageResource(android.R.drawable.ic_btn_speak_now)
+            setImageResource(R.drawable.ic_btn_speak_now)
             setColorFilter(Color.parseColor(ACCENT))
             background = GradientDrawable().apply {
                 shape = GradientDrawable.OVAL
@@ -203,13 +224,8 @@ class OverlayService : Service() {
             inputType = InputType.TYPE_CLASS_TEXT
             background = null
             isSingleLine = true
-            isFocusable = false // this field is just a tappable display; real typing happens in QueryInputActivity
-
-            setOnClickListener {
-                val intent = Intent(this@OverlayService, QueryInputActivity::class.java)
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                startActivity(intent)
-            }
+            isFocusable = false
+            isClickable = false
         }
         inputRow.addView(
             input,
@@ -232,15 +248,20 @@ class OverlayService : Service() {
             PixelFormat.TRANSLUCENT
         )
         params.gravity = Gravity.BOTTOM
+        @Suppress("DEPRECATION")
         params.softInputMode = WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE
 
         card.translationY = 300f
         card.alpha = 0f
-        windowManager?.addView(card, params)
-        panelView = card
-        panelParams = params
 
-        card.animate().translationY(0f).alpha(1f).setDuration(200).start()
+        runCatching {
+            windowManager?.addView(card, params)
+            panelView = card
+            panelParams = params
+            card.animate().translationY(0f).alpha(1f).setDuration(200).start()
+        }.onFailure {
+            stopSelf()
+        }
     }
 
     private fun dismiss() {
@@ -253,6 +274,7 @@ class OverlayService : Service() {
 
     private fun removeViews() {
         pulseAnimator?.cancel()
+        statusLabelRef = null
         panelView?.let { runCatching { windowManager?.removeView(it) } }
         panelView = null
         panelParams = null
@@ -268,7 +290,7 @@ class OverlayService : Service() {
         }
         return NotificationCompat.Builder(this, CHANNEL_ID)
             .setContentTitle("Nimo is listening")
-            .setSmallIcon(android.R.drawable.ic_btn_speak_now)
+            .setSmallIcon(R.drawable.ic_btn_speak_now)
             .setPriority(NotificationCompat.PRIORITY_MIN)
             .build()
     }

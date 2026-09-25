@@ -2,7 +2,7 @@
 <resources>
 
     <style name="Theme.MyApp" parent="android:Theme.Material.Light.NoActionBar" />
-    <style name="Theme.Transparent" parent="Theme.AppCompat.NoActionBar">
+    <style name="Theme.Transparent" parent="android:Theme.DeviceDefault.NoActionBar">
         <item name="android:windowIsTranslucent">true</item>
         <item name="android:windowBackground">@android:color/transparent</item>
         <item name="android:windowContentOverlay">@null</item>
