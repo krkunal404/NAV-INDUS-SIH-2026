@@ -1,0 +1,205 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.example.myapp"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+7-->INJECTED
+8        android:minSdkVersion="24"
+8-->INJECTED
+9        android:targetSdkVersion="37" />
+9-->INJECTED
+10
+11    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+11-->C:\Users\ALOK\AndroidStudioProjects\MyApp\app\src\main\AndroidManifest.xml:5:5-78
+11-->C:\Users\ALOK\AndroidStudioProjects\MyApp\app\src\main\AndroidManifest.xml:5:22-75
+12    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+12-->C:\Users\ALOK\AndroidStudioProjects\MyApp\app\src\main\AndroidManifest.xml:6:5-71
+12-->C:\Users\ALOK\AndroidStudioProjects\MyApp\app\src\main\AndroidManifest.xml:6:22-68
+13    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+13-->C:\Users\ALOK\AndroidStudioProjects\MyApp\app\src\main\AndroidManifest.xml:7:5-77
+13-->C:\Users\ALOK\AndroidStudioProjects\MyApp\app\src\main\AndroidManifest.xml:7:22-74
+14    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MICROPHONE" />
+14-->C:\Users\ALOK\AndroidStudioProjects\MyApp\app\src\main\AndroidManifest.xml:8:5-88
+14-->C:\Users\ALOK\AndroidStudioProjects\MyApp\app\src\main\AndroidManifest.xml:8:22-85
+15    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+15-->C:\Users\ALOK\AndroidStudioProjects\MyApp\app\src\main\AndroidManifest.xml:9:5-77
+15-->C:\Users\ALOK\AndroidStudioProjects\MyApp\app\src\main\AndroidManifest.xml:9:22-74
+16
+17    <permission
+17-->[androidx.core:core:1.16.0] C:\Users\ALOK\.gradle\caches\9.6.0\transforms\2197676f31b9d2c5f64a9da7242aa6eb\transformed\core-1.16.0\AndroidManifest.xml:22:5-24:47
+18        android:name="com.example.myapp.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+18-->[androidx.core:core:1.16.0] C:\Users\ALOK\.gradle\caches\9.6.0\transforms\2197676f31b9d2c5f64a9da7242aa6eb\transformed\core-1.16.0\AndroidManifest.xml:23:9-81
+19        android:protectionLevel="signature" />
+19-->[androidx.core:core:1.16.0] C:\Users\ALOK\.gradle\caches\9.6.0\transforms\2197676f31b9d2c5f64a9da7242aa6eb\transformed\core-1.16.0\AndroidManifest.xml:24:9-44
+20
+21    <uses-permission android:name="com.example.myapp.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+21-->[androidx.core:core:1.16.0] C:\Users\ALOK\.gradle\caches\9.6.0\transforms\2197676f31b9d2c5f64a9da7242aa6eb\transformed\core-1.16.0\AndroidManifest.xml:26:5-97
+21-->[androidx.core:core:1.16.0] C:\Users\ALOK\.gradle\caches\9.6.0\transforms\2197676f31b9d2c5f64a9da7242aa6eb\transformed\core-1.16.0\AndroidManifest.xml:26:22-94
+22
+23    <application
+23-->C:\Users\ALOK\AndroidStudioProjects\MyApp\app\src\main\AndroidManifest.xml:11:5-44:19
+24        android:allowBackup="true"
+24-->C:\Users\ALOK\AndroidStudioProjects\MyApp\app\src\main\AndroidManifest.xml:12:9-35
+25        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+25-->[androidx.core:core:1.16.0] C:\Users\ALOK\.gradle\caches\9.6.0\transforms\2197676f31b9d2c5f64a9da7242aa6eb\transformed\core-1.16.0\AndroidManifest.xml:28:18-86
+26        android:dataExtractionRules="@xml/data_extraction_rules"
+26-->C:\Users\ALOK\AndroidStudioProjects\MyApp\app\src\main\AndroidManifest.xml:13:9-65
+27        android:debuggable="true"
+28        android:extractNativeLibs="false"
+28-->INJECTED
+29        android:fullBackupContent="@xml/backup_rules"
+29-->C:\Users\ALOK\AndroidStudioProjects\MyApp\app\src\main\AndroidManifest.xml:14:9-54
+30        android:icon="@mipmap/ic_launcher"
+30-->C:\Users\ALOK\AndroidStudioProjects\MyApp\app\src\main\AndroidManifest.xml:15:9-43
+31        android:label="@string/app_name"
+31-->C:\Users\ALOK\AndroidStudioProjects\MyApp\app\src\main\AndroidManifest.xml:16:9-41
+32        android:roundIcon="@mipmap/ic_launcher_round"
+32-->C:\Users\ALOK\AndroidStudioProjects\MyApp\app\src\main\AndroidManifest.xml:17:9-54
+33        android:supportsRtl="true"
+33-->C:\Users\ALOK\AndroidStudioProjects\MyApp\app\src\main\AndroidManifest.xml:18:9-35
+34        android:testOnly="true"
+35        android:theme="@style/Theme.MyApp" >
+35-->C:\Users\ALOK\AndroidStudioProjects\MyApp\app\src\main\AndroidManifest.xml:19:9-43
+36        <activity
+36-->C:\Users\ALOK\AndroidStudioProjects\MyApp\app\src\main\AndroidManifest.xml:20:9-31:20
+37            android:name="com.example.myapp.MainActivity"
+37-->C:\Users\ALOK\AndroidStudioProjects\MyApp\app\src\main\AndroidManifest.xml:21:13-41
+38            android:exported="true"
+38-->C:\Users\ALOK\AndroidStudioProjects\MyApp\app\src\main\AndroidManifest.xml:22:13-36
+39            android:label="@string/app_name"
+39-->C:\Users\ALOK\AndroidStudioProjects\MyApp\app\src\main\AndroidManifest.xml:23:13-45
+40            android:theme="@style/Theme.MyApp"
+40-->C:\Users\ALOK\AndroidStudioProjects\MyApp\app\src\main\AndroidManifest.xml:24:13-47
+41            android:windowSoftInputMode="adjustResize" >
+41-->C:\Users\ALOK\AndroidStudioProjects\MyApp\app\src\main\AndroidManifest.xml:25:13-55
+42            <intent-filter>
+42-->C:\Users\ALOK\AndroidStudioProjects\MyApp\app\src\main\AndroidManifest.xml:26:13-30:29
+43                <action android:name="android.intent.action.MAIN" />
+43-->C:\Users\ALOK\AndroidStudioProjects\MyApp\app\src\main\AndroidManifest.xml:27:17-69
+43-->C:\Users\ALOK\AndroidStudioProjects\MyApp\app\src\main\AndroidManifest.xml:27:25-66
+44
+45                <category android:name="android.intent.category.LAUNCHER" />
+45-->C:\Users\ALOK\AndroidStudioProjects\MyApp\app\src\main\AndroidManifest.xml:29:17-77
+45-->C:\Users\ALOK\AndroidStudioProjects\MyApp\app\src\main\AndroidManifest.xml:29:27-74
+46            </intent-filter>
+47        </activity>
+48        <activity
+48-->C:\Users\ALOK\AndroidStudioProjects\MyApp\app\src\main\AndroidManifest.xml:33:9-38:49
+49            android:name="com.example.myapp.overlay.QueryInputActivity"
+49-->C:\Users\ALOK\AndroidStudioProjects\MyApp\app\src\main\AndroidManifest.xml:34:13-55
+50            android:excludeFromRecents="true"
+50-->C:\Users\ALOK\AndroidStudioProjects\MyApp\app\src\main\AndroidManifest.xml:38:13-46
+51            android:exported="false"
+51-->C:\Users\ALOK\AndroidStudioProjects\MyApp\app\src\main\AndroidManifest.xml:36:13-37
+52            android:launchMode="singleTop"
+52-->C:\Users\ALOK\AndroidStudioProjects\MyApp\app\src\main\AndroidManifest.xml:37:13-43
+53            android:theme="@style/Theme.Transparent" />
+53-->C:\Users\ALOK\AndroidStudioProjects\MyApp\app\src\main\AndroidManifest.xml:35:13-53
+54
+55        <service
+55-->C:\Users\ALOK\AndroidStudioProjects\MyApp\app\src\main\AndroidManifest.xml:40:9-43:40
+56            android:name="com.example.myapp.overlay.OverlayService"
+56-->C:\Users\ALOK\AndroidStudioProjects\MyApp\app\src\main\AndroidManifest.xml:41:13-51
+57            android:exported="false"
+57-->C:\Users\ALOK\AndroidStudioProjects\MyApp\app\src\main\AndroidManifest.xml:43:13-37
+58            android:foregroundServiceType="microphone" />
+58-->C:\Users\ALOK\AndroidStudioProjects\MyApp\app\src\main\AndroidManifest.xml:42:13-55
+59
+60        <activity
+60-->[androidx.compose.ui:ui-tooling-android:1.10.4] C:\Users\ALOK\.gradle\caches\9.6.0\transforms\7629ca5cf6992d4d9bd57362deb23084\transformed\ui-tooling\AndroidManifest.xml:23:9-25:39
+61            android:name="androidx.compose.ui.tooling.PreviewActivity"
+61-->[androidx.compose.ui:ui-tooling-android:1.10.4] C:\Users\ALOK\.gradle\caches\9.6.0\transforms\7629ca5cf6992d4d9bd57362deb23084\transformed\ui-tooling\AndroidManifest.xml:24:13-71
+62            android:exported="true" />
+62-->[androidx.compose.ui:ui-tooling-android:1.10.4] C:\Users\ALOK\.gradle\caches\9.6.0\transforms\7629ca5cf6992d4d9bd57362deb23084\transformed\ui-tooling\AndroidManifest.xml:25:13-36
+63        <activity
+63-->[androidx.compose.ui:ui-test-manifest:1.10.4] C:\Users\ALOK\.gradle\caches\9.6.0\transforms\6b022e559ac8a79cdd1719be30cc9be3\transformed\ui-test-manifest-1.10.4\AndroidManifest.xml:23:9-26:79
+64            android:name="androidx.activity.ComponentActivity"
+64-->[androidx.compose.ui:ui-test-manifest:1.10.4] C:\Users\ALOK\.gradle\caches\9.6.0\transforms\6b022e559ac8a79cdd1719be30cc9be3\transformed\ui-test-manifest-1.10.4\AndroidManifest.xml:24:13-63
+65            android:exported="true"
+65-->[androidx.compose.ui:ui-test-manifest:1.10.4] C:\Users\ALOK\.gradle\caches\9.6.0\transforms\6b022e559ac8a79cdd1719be30cc9be3\transformed\ui-test-manifest-1.10.4\AndroidManifest.xml:25:13-36
+66            android:theme="@android:style/Theme.Material.Light.NoActionBar" />
+66-->[androidx.compose.ui:ui-test-manifest:1.10.4] C:\Users\ALOK\.gradle\caches\9.6.0\transforms\6b022e559ac8a79cdd1719be30cc9be3\transformed\ui-test-manifest-1.10.4\AndroidManifest.xml:26:13-76
+67
+68        <provider
+68-->[androidx.emoji2:emoji2:1.4.0] C:\Users\ALOK\.gradle\caches\9.6.0\transforms\19e50b0eaa0d75ae4dd1646d10b093a1\transformed\emoji2-1.4.0\AndroidManifest.xml:24:9-32:20
+69            android:name="androidx.startup.InitializationProvider"
+69-->[androidx.emoji2:emoji2:1.4.0] C:\Users\ALOK\.gradle\caches\9.6.0\transforms\19e50b0eaa0d75ae4dd1646d10b093a1\transformed\emoji2-1.4.0\AndroidManifest.xml:25:13-67
+70            android:authorities="com.example.myapp.androidx-startup"
+70-->[androidx.emoji2:emoji2:1.4.0] C:\Users\ALOK\.gradle\caches\9.6.0\transforms\19e50b0eaa0d75ae4dd1646d10b093a1\transformed\emoji2-1.4.0\AndroidManifest.xml:26:13-68
+71            android:exported="false" >
+71-->[androidx.emoji2:emoji2:1.4.0] C:\Users\ALOK\.gradle\caches\9.6.0\transforms\19e50b0eaa0d75ae4dd1646d10b093a1\transformed\emoji2-1.4.0\AndroidManifest.xml:27:13-37
+72            <meta-data
+72-->[androidx.emoji2:emoji2:1.4.0] C:\Users\ALOK\.gradle\caches\9.6.0\transforms\19e50b0eaa0d75ae4dd1646d10b093a1\transformed\emoji2-1.4.0\AndroidManifest.xml:29:13-31:52
+73                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+73-->[androidx.emoji2:emoji2:1.4.0] C:\Users\ALOK\.gradle\caches\9.6.0\transforms\19e50b0eaa0d75ae4dd1646d10b093a1\transformed\emoji2-1.4.0\AndroidManifest.xml:30:17-75
+74                android:value="androidx.startup" />
+74-->[androidx.emoji2:emoji2:1.4.0] C:\Users\ALOK\.gradle\caches\9.6.0\transforms\19e50b0eaa0d75ae4dd1646d10b093a1\transformed\emoji2-1.4.0\AndroidManifest.xml:31:17-49
+75            <meta-data
+75-->[androidx.lifecycle:lifecycle-process:2.9.4] C:\Users\ALOK\.gradle\caches\9.6.0\transforms\1e9831f0d460cb0162769881834c5421\transformed\lifecycle-process-2.9.4\AndroidManifest.xml:29:13-31:52
+76                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+76-->[androidx.lifecycle:lifecycle-process:2.9.4] C:\Users\ALOK\.gradle\caches\9.6.0\transforms\1e9831f0d460cb0162769881834c5421\transformed\lifecycle-process-2.9.4\AndroidManifest.xml:30:17-78
+77                android:value="androidx.startup" />
+77-->[androidx.lifecycle:lifecycle-process:2.9.4] C:\Users\ALOK\.gradle\caches\9.6.0\transforms\1e9831f0d460cb0162769881834c5421\transformed\lifecycle-process-2.9.4\AndroidManifest.xml:31:17-49
+78            <meta-data
+78-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\ALOK\.gradle\caches\9.6.0\transforms\47a5f8f593c6544c16b13fb8b120bcc6\transformed\profileinstaller-1.4.0\AndroidManifest.xml:29:13-31:52
+79                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
+79-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\ALOK\.gradle\caches\9.6.0\transforms\47a5f8f593c6544c16b13fb8b120bcc6\transformed\profileinstaller-1.4.0\AndroidManifest.xml:30:17-85
+80                android:value="androidx.startup" />
+80-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\ALOK\.gradle\caches\9.6.0\transforms\47a5f8f593c6544c16b13fb8b120bcc6\transformed\profileinstaller-1.4.0\AndroidManifest.xml:31:17-49
+81        </provider>
+82
+83        <uses-library
+83-->[androidx.window:window:1.5.0] C:\Users\ALOK\.gradle\caches\9.6.0\transforms\2874a5720787e7542c464c6eec18ea97\transformed\window-1.5.0\AndroidManifest.xml:23:9-25:40
+84            android:name="androidx.window.extensions"
+84-->[androidx.window:window:1.5.0] C:\Users\ALOK\.gradle\caches\9.6.0\transforms\2874a5720787e7542c464c6eec18ea97\transformed\window-1.5.0\AndroidManifest.xml:24:13-54
+85            android:required="false" />
+85-->[androidx.window:window:1.5.0] C:\Users\ALOK\.gradle\caches\9.6.0\transforms\2874a5720787e7542c464c6eec18ea97\transformed\window-1.5.0\AndroidManifest.xml:25:13-37
+86        <uses-library
+86-->[androidx.window:window:1.5.0] C:\Users\ALOK\.gradle\caches\9.6.0\transforms\2874a5720787e7542c464c6eec18ea97\transformed\window-1.5.0\AndroidManifest.xml:26:9-28:40
+87            android:name="androidx.window.sidecar"
+87-->[androidx.window:window:1.5.0] C:\Users\ALOK\.gradle\caches\9.6.0\transforms\2874a5720787e7542c464c6eec18ea97\transformed\window-1.5.0\AndroidManifest.xml:27:13-51
+88            android:required="false" />
+88-->[androidx.window:window:1.5.0] C:\Users\ALOK\.gradle\caches\9.6.0\transforms\2874a5720787e7542c464c6eec18ea97\transformed\window-1.5.0\AndroidManifest.xml:28:13-37
+89
+90        <receiver
+90-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\ALOK\.gradle\caches\9.6.0\transforms\47a5f8f593c6544c16b13fb8b120bcc6\transformed\profileinstaller-1.4.0\AndroidManifest.xml:34:9-52:20
+91            android:name="androidx.profileinstaller.ProfileInstallReceiver"
+91-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\ALOK\.gradle\caches\9.6.0\transforms\47a5f8f593c6544c16b13fb8b120bcc6\transformed\profileinstaller-1.4.0\AndroidManifest.xml:35:13-76
+92            android:directBootAware="false"
+92-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\ALOK\.gradle\caches\9.6.0\transforms\47a5f8f593c6544c16b13fb8b120bcc6\transformed\profileinstaller-1.4.0\AndroidManifest.xml:36:13-44
+93            android:enabled="true"
+93-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\ALOK\.gradle\caches\9.6.0\transforms\47a5f8f593c6544c16b13fb8b120bcc6\transformed\profileinstaller-1.4.0\AndroidManifest.xml:37:13-35
+94            android:exported="true"
+94-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\ALOK\.gradle\caches\9.6.0\transforms\47a5f8f593c6544c16b13fb8b120bcc6\transformed\profileinstaller-1.4.0\AndroidManifest.xml:38:13-36
+95            android:permission="android.permission.DUMP" >
+95-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\ALOK\.gradle\caches\9.6.0\transforms\47a5f8f593c6544c16b13fb8b120bcc6\transformed\profileinstaller-1.4.0\AndroidManifest.xml:39:13-57
+96            <intent-filter>
+96-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\ALOK\.gradle\caches\9.6.0\transforms\47a5f8f593c6544c16b13fb8b120bcc6\transformed\profileinstaller-1.4.0\AndroidManifest.xml:40:13-42:29
+97                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
+97-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\ALOK\.gradle\caches\9.6.0\transforms\47a5f8f593c6544c16b13fb8b120bcc6\transformed\profileinstaller-1.4.0\AndroidManifest.xml:41:17-91
+97-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\ALOK\.gradle\caches\9.6.0\transforms\47a5f8f593c6544c16b13fb8b120bcc6\transformed\profileinstaller-1.4.0\AndroidManifest.xml:41:25-88
+98            </intent-filter>
+99            <intent-filter>
+99-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\ALOK\.gradle\caches\9.6.0\transforms\47a5f8f593c6544c16b13fb8b120bcc6\transformed\profileinstaller-1.4.0\AndroidManifest.xml:43:13-45:29
+100                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
+100-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\ALOK\.gradle\caches\9.6.0\transforms\47a5f8f593c6544c16b13fb8b120bcc6\transformed\profileinstaller-1.4.0\AndroidManifest.xml:44:17-85
+100-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\ALOK\.gradle\caches\9.6.0\transforms\47a5f8f593c6544c16b13fb8b120bcc6\transformed\profileinstaller-1.4.0\AndroidManifest.xml:44:25-82
+101            </intent-filter>
+102            <intent-filter>
+102-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\ALOK\.gradle\caches\9.6.0\transforms\47a5f8f593c6544c16b13fb8b120bcc6\transformed\profileinstaller-1.4.0\AndroidManifest.xml:46:13-48:29
+103                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
+103-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\ALOK\.gradle\caches\9.6.0\transforms\47a5f8f593c6544c16b13fb8b120bcc6\transformed\profileinstaller-1.4.0\AndroidManifest.xml:47:17-88
+103-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\ALOK\.gradle\caches\9.6.0\transforms\47a5f8f593c6544c16b13fb8b120bcc6\transformed\profileinstaller-1.4.0\AndroidManifest.xml:47:25-85
+104            </intent-filter>
+105            <intent-filter>
+105-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\ALOK\.gradle\caches\9.6.0\transforms\47a5f8f593c6544c16b13fb8b120bcc6\transformed\profileinstaller-1.4.0\AndroidManifest.xml:49:13-51:29
+106                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
+106-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\ALOK\.gradle\caches\9.6.0\transforms\47a5f8f593c6544c16b13fb8b120bcc6\transformed\profileinstaller-1.4.0\AndroidManifest.xml:50:17-95
+106-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\ALOK\.gradle\caches\9.6.0\transforms\47a5f8f593c6544c16b13fb8b120bcc6\transformed\profileinstaller-1.4.0\AndroidManifest.xml:50:25-92
+107            </intent-filter>
+108        </receiver>
+109    </application>
+110
+111</manifest>

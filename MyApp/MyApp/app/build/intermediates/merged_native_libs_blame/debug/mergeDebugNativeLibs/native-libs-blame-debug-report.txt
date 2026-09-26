@@ -1,0 +1,15 @@
+lib/arm64-v8a/libandroidx.graphics.path.so->androidx.graphics:graphics-path:1.0.1
+lib/armeabi-v7a/libandroidx.graphics.path.so->androidx.graphics:graphics-path:1.0.1
+lib/x86/libandroidx.graphics.path.so->androidx.graphics:graphics-path:1.0.1
+lib/x86_64/libandroidx.graphics.path.so->androidx.graphics:graphics-path:1.0.1
+lib/arm64-v8a/libvosk.so->com.alphacephei:vosk-android:0.3.47
+lib/armeabi-v7a/libvosk.so->com.alphacephei:vosk-android:0.3.47
+lib/x86/libvosk.so->com.alphacephei:vosk-android:0.3.47
+lib/x86_64/libvosk.so->com.alphacephei:vosk-android:0.3.47
+lib/arm64-v8a/libjnidispatch.so->net.java.dev.jna:jna:5.13.0
+lib/armeabi/libjnidispatch.so->net.java.dev.jna:jna:5.13.0
+lib/armeabi-v7a/libjnidispatch.so->net.java.dev.jna:jna:5.13.0
+lib/mips/libjnidispatch.so->net.java.dev.jna:jna:5.13.0
+lib/mips64/libjnidispatch.so->net.java.dev.jna:jna:5.13.0
+lib/x86/libjnidispatch.so->net.java.dev.jna:jna:5.13.0
+lib/x86_64/libjnidispatch.so->net.java.dev.jna:jna:5.13.0
