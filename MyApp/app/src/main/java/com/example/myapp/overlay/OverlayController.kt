@@ -26,6 +26,7 @@ object OverlayController {
     }
 
     fun show(context: Context) {
+        if (!hasPermission(context)) return
         val intent = Intent(context, OverlayService::class.java)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             context.startForegroundService(intent)
