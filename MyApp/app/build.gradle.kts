@@ -52,8 +52,8 @@ android {
 }
 
 dependencies {
-    implementation("com.alphacephei:vosk-android:0.3.47")
-    implementation("com.squareup.okhttp3:okhttp:4.12.0")
+    implementation("com.alphacephei:vosk-android:0.3.75")
+    implementation("com.squareup.okhttp3:okhttp:5.5.0")
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.compose.material3)
