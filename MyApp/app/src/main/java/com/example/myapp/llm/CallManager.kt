@@ -47,10 +47,10 @@ object CallManager {
         if (!isAwaitingConfirmation || pendingContact == null) return false
 
         val lower = userSpeech.lowercase().trim()
-        val isAffirmative = listOf("yes", "yeah", "yep", "sure", "call", "do it", "ok", "okay", "please")
+        val isAffirmative = listOf("yes", "yeah", "yep", "sure", "call", "do it", "ok", "okay", "please", "हाँ", "हा", "कॉल करो", "हाँ करो")
             .any { lower.contains(it) }
 
-        val isNegative = listOf("no", "nope", "don't", "dont", "cancel", "stop")
+        val isNegative = listOf("no", "nope", "don't", "dont", "cancel", "stop", "नहीं", "ना", "मत करो", "रद्द करो")
             .any { lower.contains(it) }
 
         val contact = pendingContact!!
@@ -104,7 +104,7 @@ object CallManager {
         }
     }
 
-    private fun lookupContact(context: Context, name: String): ContactInfo? {
+    fun lookupContact(context: Context, name: String): ContactInfo? {
         val cleanSearch = name.lowercase().trim().replace("[^a-z0-9\\s]".toRegex(), "")
         if (cleanSearch.isBlank()) return null
 

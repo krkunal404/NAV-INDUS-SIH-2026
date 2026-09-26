@@ -33,7 +33,7 @@ object VoskVoiceManager {
     }
 
     private var currentMode = Mode.IDLE
-    private var wakeWordCallback: (() -> Unit)? = null
+    private var wakeWordCallback: ((String?) -> Unit)? = null
     private var activeQueryResultCallback: ((String) -> Unit)? = null
     private var activeQueryErrorCallback: ((String) -> Unit)? = null
     private var activeQueryPartialCallback: ((String) -> Unit)? = null
@@ -122,7 +122,7 @@ object VoskVoiceManager {
 
     fun startWakeWordListening(
         context: Context,
-        onWakeWordDetected: () -> Unit
+        onWakeWordDetected: (String?) -> Unit
     ) {
         wakeWordCallback = onWakeWordDetected
         currentMode = Mode.WAKE_WORD
@@ -177,9 +177,13 @@ object VoskVoiceManager {
 
                     Log.d(TAG, "Vosk Partial: $text")
 
-                    if (currentMode == Mode.WAKE_WORD) {
-                        checkWakeWord(text)
-                    } else if (currentMode == Mode.ACTIVE_QUERY) {
+                    // Wake word is confirmed only on onResult/onFinalResult (below),
+                    // never on a partial. Vosk partials fire the instant "hey nimo"
+                    // is heard, before the rest of a continuous phrase like "hey
+                    // nimo open whatsapp" has been recognized - reacting here would
+                    // silently drop "open whatsapp" every time it's said in one
+                    // breath with the wake word.
+                    if (currentMode == Mode.ACTIVE_QUERY) {
                         mainHandler.post {
                             activeQueryPartialCallback?.invoke(text)
                         }
@@ -258,14 +262,25 @@ object VoskVoiceManager {
 
     private fun checkWakeWord(text: String) {
         val lower = text.lowercase().trim()
-        val match = WAKE_WORDS.any { lower.contains(it) }
-        if (match) {
-            Log.d(TAG, "Wake word detected in: \"$text\"")
-            val callback = wakeWordCallback
-            stopListening()
-            mainHandler.post {
-                callback?.invoke()
-            }
+        // Prefer the longest matching wake phrase (e.g. "hello nimo" over
+        // just "nimo") so the remainder we slice off below is accurate.
+        val matched = WAKE_WORDS
+            .filter { lower.contains(it) }
+            .maxByOrNull { it.length }
+            ?: return
+
+        Log.d(TAG, "Wake word detected in: \"$text\"")
+        val idx = lower.indexOf(matched)
+        val trailingCommand = if (idx >= 0) {
+            lower.substring(idx + matched.length).trim().ifBlank { null }
+        } else {
+            null
+        }
+
+        val callback = wakeWordCallback
+        stopListening()
+        mainHandler.post {
+            callback?.invoke(trailingCommand)
         }
     }
 

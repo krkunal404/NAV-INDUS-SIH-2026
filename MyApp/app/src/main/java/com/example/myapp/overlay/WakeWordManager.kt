@@ -9,7 +9,7 @@ import com.example.myapp.speech.VoskVoiceManager
  */
 object WakeWordManager {
 
-    fun start(context: Context, onWakeWordDetected: () -> Unit) {
+    fun start(context: Context, onWakeWordDetected: (String?) -> Unit) {
         VoskVoiceManager.startWakeWordListening(context, onWakeWordDetected)
     }
 

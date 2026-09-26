@@ -1,151 +1,134 @@
-# Nimo — Voice Companion App (Android)
+# Nimo — Voice Assistant Companion App (Android)
 
-Nimo is a voice-first Android assistant built for elderly users. It shows a
-Google Assistant-style overlay panel that can appear over any other app,
-supports both voice ("Ok Nimo" wake word) and typed input, and stays out of
-the way of whatever app is running underneath it.
+Nimo is an advanced, voice-first Android AI companion assistant designed for elder care and hands-free phone control. It features a WhatsApp-style multi-color chat interface, offline & online speech recognition, Hindi/English multi-language support, Google Assistant-style floating system overlay, Emergency SOS calling, messaging, health tracking, and alarm management.
 
 Built by **Team Navindus** for SIH 2026.
 
 ---
 
-## Tech stack
+## ✨ Latest Features & Capabilities
 
-- **Pure native Android** — Kotlin + Jetpack Compose (no React Native / Expo)
-- **Android's built-in `SpeechRecognizer`** for wake-word detection (free,
-  no API key, needs internet)
-- **`WindowManager` overlay** for the floating panel (same mechanism apps
-  like Messenger and Grammarly use)
+### 🎨 1. Vibrant Multi-Color Chat UI (WhatsApp Style)
+- **User Messages (Right):** Displayed in Light Orange / Sunset Coral (`#FF8C42`) chat bubbles.
+- **Nimo Messages (Left):** Displayed in Dark Slate Royal (`#242A3D`) chat bubbles with Bright Cyan (`#00E5FF`) accent borders.
+- **Centered Round Mic Button:** Prominent circular Fresh Emerald Green button (`#00D26A`, 58dp) in the bottom center.
+- **Quick Language Switch:** One-tap Amber Golden (`#FF8C42`) toggle button in the header (`EN` / `HI`).
+
+### 🪟 2. Smart Floating System Overlay (Google Assistant Style)
+- **In-App View:** Automatically hides when you are inside the main app to prevent clutter.
+- **On Top of Other Apps:** Automatically activates over external apps (YouTube, WhatsApp, Settings, Launcher) when you switch away from Nimo.
+
+### 🌐 3. Multilingual Support (English & Hindi)
+- **Voice / Text Language Switch:** Say or type *"Nimo switch to Hindi"* (`"हिंदी में बात करो"`) or *"Switch to English"*.
+- **Cross-Lingual Understanding:** When in Hindi mode, even if you type or speak in English (e.g. *"open youtube"*), Nimo responds in Hindi: ***"आपके लिए यूट्यूब खोल रहा हूँ।"***
+- **Hindi Text-To-Speech:** Automatically switches Android TTS engine to `Locale("hi", "IN")` for Devanagari Hindi text.
+
+### 🎙️ 4. Hybrid Offline & Online Speech Engine
+- **Vosk Offline Speech Model:** Uses the offline Vosk model (`assets/models/vosk-model-small-en-us-0.15`) for offline English voice recognition and continuous wake-word detection (*"Hello Nimo"* / *"Ok Nimo"*).
+- **Contact-Biased Speech Recognition:** Dynamically passes user contact display names (`READ_CONTACTS`) into Vosk's grammar decoder for 100% accurate contact name recognition (*"Call Sachin"*).
+- **Native Hindi Speech Engine:** Uses Android's native `SpeechRecognizer` (`hi-IN`) for Devanagari Hindi speech recognition.
+
+### 🛑 5. Instant Voice Interruption ("Nimo Stop")
+- Say ***"Nimo stop"***, ***"stop"***, or ***"ruk jao"*** (*"रुक जाओ"*): Nimo immediately halts TTS audio playback, cancels pending confirmations, and listens for your next command.
+
+### 🚨 6. Emergency SOS Calling
+- Say ***"help"***, ***"emergency"***, ***"SOS"***, ***"save me"***, or ***"मदद"***.
+- Bypasses all confirmation questions and directly places an emergency call to `112` or your saved SOS contact.
+
+### 📞 7. Interactive Call Confirmation
+- Say ***"Call Kunal"***: Nimo searches contacts, displays/speaks *"Found Kunal (+1234567890). Should I call Kunal?"*, and listens for *"Yes"* / *"No"*.
+
+### ⏰ 8. Alarm Creation & Management
+- **Create Alarm:** Say ***"Create alarm for tom at 3:30 pm"*** or ***"Set alarm for 7 AM"***.
+- **Interactive Prompt:** If time is omitted (***"Create alarm"***), Nimo asks *"What time should I set the alarm for?"* and listens for your response.
+- **Cancel Alarms:** Say ***"Cancel all alarms"*** to open alarm management.
+
+### 💬 9. WhatsApp & SMS Message Reading & Sending
+- **Read Messages:** Say ***"read message on whatsapp by Adarsh"*** or ***"read SMS"***.
+- **Send Messages:** Say ***"send message to Adarsh on WhatsApp saying I will be late"***.
+
+### 🩺 10. Health Tracking & Reminders
+- **Log Health Stats:** Say ***"log blood pressure 120 80"*** or ***"log sugar level 110"***.
+- **Health Status:** Say ***"what is my health status"*** to hear latest recorded BP and glucose levels.
 
 ---
 
-## Prerequisites
+## 🛠️ Tech Stack & Dependencies
 
-| Requirement | Notes |
-|---|---|
-| **Android Studio** (latest stable) | Also installs the Android SDK automatically |
-| **A JDK 17–21** | Some very new bundled JDKs (24/25) break native CMake build steps used by a few dependencies. If your build fails with `WARNING: A restricted method in java.lang.System has been called`, see [Troubleshooting](#troubleshooting) below. |
-| **An Android device or emulator** running **API 24+** | Real device recommended — emulators don't pass through your PC's real microphone by default (see below) |
+- **Language:** Native Kotlin
+- **UI Framework:** Jetpack Compose + Material 3
+- **Offline Speech Recognition:** `com.alphacephei:vosk-android:0.3.47`
+- **Networking:** OkHttp 4.12.0
+- **LLM Provider:** Groq API (`llama-3.3-70b-versatile`)
+- **Speech Synthesis:** Android `TextToSpeech` (`Locale.US` & `Locale("hi", "IN")`)
+- **System Overlay:** `WindowManager` (`TYPE_APPLICATION_OVERLAY`)
 
 ---
 
-## Setup
+## 📋 Required Permissions
 
-1. **Clone the repo**
+1. **Microphone (`RECORD_AUDIO`):** Voice query capture & wake-word listening.
+2. **Contacts (`READ_CONTACTS`):** Contact lookup and grammar vocabulary biasing for speech recognition.
+3. **Phone Calls (`CALL_PHONE`):** Direct phone calls & Emergency SOS.
+4. **SMS (`READ_SMS` / `SEND_SMS`):** Reading and sending SMS messages.
+5. **Alarms (`SET_ALARM`):** System alarm scheduling.
+6. **Draw Over Other Apps (`SYSTEM_ALERT_WINDOW`):** Google Assistant-style floating overlay over other apps.
+
+---
+
+## 🚀 Setup & Installation
+
+1. **Clone the repository**
+   ```bash
+   git clone <repository-url>
+   cd MyApp
    ```
-   git clone <your-repo-url>
-   cd <repo-folder>
-   ```
 
-2. **Open in Android Studio**
-   File → Open → select the project folder → let Gradle sync finish
-   (first sync can take several minutes).
-
-3. **Run it**
-   Click the green ▶️ Run button, or from a terminal:
+2. **Set Groq API Key (Optional for AI responses)**
+   In `local.properties`, add your Groq API key:
+   ```properties
+   GROQ_API_KEY=your_groq_api_key_here
    ```
-   Run app > select your device/emulator
-   ```
+   *(Note: Local rule-based commands for calling, alarms, opening apps, health, and emergency calls work offline even without an API key).*
 
-That's it — no `npm install`, no Expo, no extra CLI setup. It's a standard
-Android Studio project.
+3. **Open in Android Studio & Run**
+   - Open project in Android Studio (Jellyfish / Koala / Ladybug or newer).
+   - Sync Gradle project files.
+   - Connect a device/emulator running **API 24+**.
+   - Click **Run (`Shift + F10`)**.
 
 ---
 
-## Permissions the app needs
-
-On first launch, the app will ask for two permissions — both require manual
-action from the user (Android doesn't allow silently granting either):
-
-1. **Microphone** (`RECORD_AUDIO`) — standard runtime permission popup.
-2. **Draw over other apps** (`SYSTEM_ALERT_WINDOW`) — opens a system Settings
-   screen where the user must flip a toggle. This is required for the
-   floating overlay panel to work, and is the same permission Messenger/
-   Grammarly-style apps need.
-
-If you deny either, the corresponding feature (voice wake-word / overlay)
-won't work until you grant it from **Settings → Apps → Nimo → Permissions**.
-
----
-
-## How the overlay + wake word work
-
-- `WakeWordManager` listens continuously using Android's `SpeechRecognizer`
-  for the phrases "ok nimo", "hello nimo", or "hey nimo". When detected, it
-  shows the overlay panel.
-- `OverlayService` draws the floating panel using `WindowManager`. The panel
-  sits at the bottom of the screen; everything above/around it stays fully
-  visible and interactive — only the panel itself intercepts touches.
-- Tapping the input field inside the panel opens `QueryInputActivity`, a
-  tiny transparent activity used only to reliably show the keyboard (a
-  Service-owned overlay window can't reliably take keyboard focus on all
-  Android versions — this is the same workaround real chat-head apps use).
-- `OverlayController` is the simple API used from `MainActivity` (or
-  anywhere else) to show/hide the overlay and check/request the "draw over
-  other apps" permission.
-
-**Note:** wake-word detection here uses Google's cloud speech recognition,
-so it requires an active internet connection and works most reliably while
-the app is in the foreground. If offline/always-on background detection
-becomes a hard requirement later, swapping in **Vosk** (fully offline, free,
-no account) is the natural upgrade path — ask in the repo issues if you want
-that swapped in.
-
----
-
-## Project structure
+## 📁 Project Structure
 
 ```
 app/src/main/java/com/example/myapp/
-├── MainActivity.kt              Entry point; requests permissions, wires callbacks
+├── MainActivity.kt                  Main Compose Chat UI & Overlay lifecycle manager
+├── llm/
+│   ├── NimoLLM.kt                   Groq LLM client & local fallback command parser
+│   ├── ActionExecutor.kt            Action execution dispatcher (Apps, Web, Calls, Alarms)
+│   ├── CallManager.kt               Interactive call confirmation & contact search
+│   ├── EmergencyManager.kt          Emergency SOS direct calling
+│   ├── AlarmManager.kt              Alarm creation, time parsing, & cancellation
+│   ├── MessageManager.kt            WhatsApp & SMS reading and sending
+│   └── HealthManager.kt             Blood pressure & glucose logging
 ├── overlay/
-│   ├── OverlayService.kt        Draws the floating panel (WindowManager)
-│   ├── OverlayController.kt     show()/hide()/permission helpers
-│   ├── WakeWordManager.kt       "Ok Nimo" detection via SpeechRecognizer
-│   └── QueryInputActivity.kt    Transparent activity for reliable text input
-├── ui/theme/                    Compose theme
-└── res/values/themes.xml        Includes Theme.Transparent for the input activity
+│   ├── OverlayService.kt            WindowManager floating system overlay panel
+│   ├── OverlayController.kt         Show/hide overlay & permission request helpers
+│   ├── ActiveVoiceInput.kt          Dual speech capture router (Vosk + Native hi-IN)
+│   ├── WakeWordManager.kt           Continuous "Hello Nimo" wake-word listener
+│   └── QueryInputActivity.kt        Transparent activity for overlay keyboard input
+├── speech/
+│   ├── VoskVoiceManager.kt          Offline Vosk model unpacker & speech recognizer
+│   ├── ContactVocabularySupplier.kt Contact name grammar biasing for Vosk
+│   ├── TTSManager.kt                Multilingual Text-To-Speech engine
+│   └── LanguageManager.kt           English / Hindi language preference manager
+└── ui/
+    ├── ChatMessage.kt               Chat bubble data model
+    └── theme/                       Compose color & typography theme
 ```
 
 ---
 
-## Troubleshooting
-
-**Build fails with `WARNING: A restricted method in java.lang.System has
-been called` on a `configureCMakeDebug` task**
-Your JDK is too new (24/25). Either:
-- Install JDK 17 and point Gradle at it via `android/gradle.properties`:
-  ```
-  org.gradle.java.home=C:\\path\\to\\jdk-17
-  ```
-- Or use whatever JDK is bundled with a slightly older Android Studio release.
-
-**"App keeps stopping" on launch**
-Check Logcat (View → Tool Windows → Logcat, filter by `AndroidRuntime`) for
-the `FATAL EXCEPTION` block and check it against recent changes — most
-common cause during development is a leftover reference to a removed
-dependency (e.g. Picovoice/Vosk classes after switching to
-`SpeechRecognizer`).
-
-**Wake word never triggers, but everything else works**
-If you're on an **emulator**, its virtual microphone does not use your PC's
-real mic by default. Open the emulator's **Extended Controls → Microphone**
-and enable **"Virtual microphone uses host audio input."** On a real device,
-just confirm mic permission is granted and you have an internet connection.
-
-**Overlay doesn't appear at all**
-Confirm "draw over other apps" permission is granted:
-Settings → Apps → Nimo → Advanced → "Display over other apps" → enabled.
-
----
-
-## Contributing
-
-This is a hackathon project (SIH 2026) — if you're joining the team:
-1. Pull the repo, open in Android Studio, sync Gradle, run.
-2. No environment variables or secret keys are required to get a basic
-   build running, since wake-word detection here uses Android's built-in
-   `SpeechRecognizer` (no third-party account needed).
-3. If a future contributor adds Vosk or Porcupine back in, remember to keep
-   any API keys/model files out of git (see `.gitignore`) and document the
-   setup steps here.
+## 👥 Team Navindus (SIH 2026)
+Built for Smart India Hackathon (SIH) 2026.
