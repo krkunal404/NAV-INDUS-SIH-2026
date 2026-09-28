@@ -279,6 +279,8 @@ class MainActivity : ComponentActivity() {
         if (!OverlayController.hasPermission(this)) {
             Log.w("Nimo", "Overlay permission missing. Requesting system alert window permission...")
             OverlayController.requestPermission(this)
+        } else {
+            OverlayController.startPersistent(this)
         }
         restartWakeWord()
     }

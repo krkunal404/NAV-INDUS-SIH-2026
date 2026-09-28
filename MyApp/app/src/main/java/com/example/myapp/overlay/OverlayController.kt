@@ -25,9 +25,10 @@ object OverlayController {
         }
     }
 
-    fun show(context: Context) {
+    fun startPersistent(context: Context) {
         if (!hasPermission(context)) return
         val intent = Intent(context, OverlayService::class.java)
+        intent.action = "ACTION_INIT"
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             context.startForegroundService(intent)
         } else {
@@ -35,9 +36,16 @@ object OverlayController {
         }
     }
 
+    fun show(context: Context) {
+        if (!hasPermission(context)) return
+        val intent = Intent(context, OverlayService::class.java)
+        intent.action = "ACTION_SHOW_BUBBLE"
+        context.startService(intent)
+    }
+
     fun hide(context: Context) {
         val intent = Intent(context, OverlayService::class.java)
-        intent.action = "ACTION_STOP"
+        intent.action = "ACTION_HIDE_BUBBLE"
         context.startService(intent)
     }
 }

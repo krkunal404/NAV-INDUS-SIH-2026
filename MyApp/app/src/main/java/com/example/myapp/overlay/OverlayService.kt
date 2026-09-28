@@ -80,6 +80,8 @@ class OverlayService : Service() {
         private const val RESPONSE_AUTO_HIDE_MS = 6000L
         private const val ACTION_STOP = "ACTION_STOP"
         private const val ACTION_HIDE_FROM_NOTIFICATION = "ACTION_HIDE_FROM_NOTIFICATION"
+        private const val ACTION_SHOW_BUBBLE = "ACTION_SHOW_BUBBLE"
+        private const val ACTION_HIDE_BUBBLE = "ACTION_HIDE_BUBBLE"
     }
 
     override fun onCreate() {
@@ -99,9 +101,16 @@ class OverlayService : Service() {
     }
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
-        if (intent?.action == ACTION_STOP || intent?.action == ACTION_HIDE_FROM_NOTIFICATION) {
-            dismiss()
-            stopSelf()
+        when (intent?.action) {
+            ACTION_STOP, ACTION_HIDE_FROM_NOTIFICATION -> {
+                dismiss()
+                stopSelf()
+            }
+            ACTION_SHOW_BUBBLE -> showBubble()
+            ACTION_HIDE_BUBBLE -> dismiss()
+            // ACTION_INIT (or null) falls through — onCreate() already did
+            // the work of creating the service and its foreground
+            // notification; nothing further to do on this particular start.
         }
         return START_STICKY
     }
