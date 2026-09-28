@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.Nimo.Splash" parent="android:Theme.Material.Light.NoActionBar">
+        <item name="android:windowBackground">@color/nimo_splash_bg</item>
+        <item name="android:statusBarColor">@color/nimo_splash_bg</item>
+        <item name="android:navigationBarColor">@color/nimo_splash_bg</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <!-- system splash: same colour + an empty icon, so it flows straight into our animated splash -->
+        <item name="android:windowSplashScreenBackground">@color/nimo_splash_bg</item>
+        <item name="android:windowSplashScreenAnimatedIcon">@drawable/nimo_splash_empty</item>
+    </style>
+</resources>

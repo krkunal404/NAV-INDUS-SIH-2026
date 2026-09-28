@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="nimo_icon_bg">#FFFFFF</color>
+    <!-- matches the paper tone of the splash artwork so no patch is visible inside the logo -->
+    <color name="nimo_splash_bg">#F9F8F4</color>
+</resources>
