@@ -159,6 +159,10 @@ This is a hackathon project (SIH 2026) — if you're joining the team:
 
 <img width="300" alt="Nimo Assistant Screenshot 2" src="https://github.com/user-attachments/assets/2fcf9ee6-e57b-4757-98ab-debd727406c8" />
 
+<img width="300" alt="Nimo Assistant Screenshot 8" src="https://github.com/user-attachments/assets/b76cfad9-8d0b-4bd5-8022-04222b9c1305" />
+
+<img width="300" alt="Nimo Assistant Screenshot 9" src="https://github.com/user-attachments/assets/7b809d0f-99e1-4f31-a6aa-60e85476eda7" />
+
 <img width="300" alt="Nimo Assistant Screenshot 3" src="https://github.com/user-attachments/assets/00fd4977-efbc-495b-8db5-a4a14ac0ffd3" />
 
 <img width="300" alt="Nimo Assistant Screenshot 4" src="https://github.com/user-attachments/assets/e14d67e5-145d-4bbd-be03-16f111c8077f" />
@@ -169,6 +173,4 @@ This is a hackathon project (SIH 2026) — if you're joining the team:
 
 <img width="300" alt="Nimo Assistant Screenshot 7" src="https://github.com/user-attachments/assets/749f3f3d-8e78-4477-a26f-1f6124476319" />
 
-<img width="300" alt="Nimo Assistant Screenshot 8" src="https://github.com/user-attachments/assets/b76cfad9-8d0b-4bd5-8022-04222b9c1305" />
 
-<img width="300" alt="Nimo Assistant Screenshot 9" src="https://github.com/user-attachments/assets/7b809d0f-99e1-4f31-a6aa-60e85476eda7" />
