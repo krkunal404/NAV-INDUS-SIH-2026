@@ -156,12 +156,12 @@ This is a hackathon project (SIH 2026) — if you're joining the team:
 ## Working ScreenShots
 
 <img width="722" height="1600" alt="image" src="https://github.com/user-attachments/assets/f91adeef-9080-483e-b00e-f7016e7b4171" />
-<img width="1080" height="2392" alt="image" src="https://github.com/user-attachments/assets/2fcf9ee6-e57b-4757-98ab-debd727406c8" />
-<img width="1080" height="2392" alt="image" src="https://github.com/user-attachments/assets/00fd4977-efbc-495b-8db5-a4a14ac0ffd3" />
-<img width="1080" height="2392" alt="image" src="https://github.com/user-attachments/assets/e14d67e5-145d-4bbd-be03-16f111c8077f" />
-<img width="1080" height="2392" alt="image" src="https://github.com/user-attachments/assets/ad5ff9dd-6bee-478a-94d1-da4d091f639f" />
-<img width="722" height="1600" alt="image" src="https://github.com/user-attachments/assets/3af559fa-56b1-4746-aec8-5e829cc07698" />
-<img width="722" height="1600" alt="image" src="https://github.com/user-attachments/assets/749f3f3d-8e78-4477-a26f-1f6124476319" />
-<img width="722" height="1600" alt="image" src="https://github.com/user-attachments/assets/b76cfad9-8d0b-4bd5-8022-04222b9c1305" />
-<img width="722" height="1600" alt="image" src="https://github.com/user-attachments/assets/7b809d0f-99e1-4f31-a6aa-60e85476eda7" />
+<img width="600" height="800" alt="image" src="https://github.com/user-attachments/assets/2fcf9ee6-e57b-4757-98ab-debd727406c8" />
+<img width="600" height="800" alt="image" src="https://github.com/user-attachments/assets/00fd4977-efbc-495b-8db5-a4a14ac0ffd3" />
+<img width="600" height="800" alt="image" src="https://github.com/user-attachments/assets/e14d67e5-145d-4bbd-be03-16f111c8077f" />
+<img width="600" height="800" alt="image" src="https://github.com/user-attachments/assets/ad5ff9dd-6bee-478a-94d1-da4d091f639f" />
+<img width="600" height="800" alt="image" src="https://github.com/user-attachments/assets/3af559fa-56b1-4746-aec8-5e829cc07698" />
+<img width="600" height="800" alt="image" src="https://github.com/user-attachments/assets/749f3f3d-8e78-4477-a26f-1f6124476319" />
+<img width="600" height="800" alt="image" src="https://github.com/user-attachments/assets/b76cfad9-8d0b-4bd5-8022-04222b9c1305" />
+<img width="600" height="800" alt="image" src="https://github.com/user-attachments/assets/7b809d0f-99e1-4f31-a6aa-60e85476eda7" />
 
