@@ -154,9 +154,10 @@ This is a hackathon project (SIH 2026) — if you're joining the team:
 ---
 
 ## Working ScreenShots
-<img width="300" alt="Nimo Assistant Hindi Mode"  src="https://github.com/user-attachments/assets/f6c964cc-19ce-4b4c-98af-8952e3fa3479"/>
 
 <img width="300" alt="Nimo Assistant - Home Screen" src="https://github.com/user-attachments/assets/f91adeef-9080-483e-b00e-f7016e7b4171" />
+<img width="300" alt="Nimo Assistant Hindi Mode"  src="https://github.com/user-attachments/assets/f6c964cc-19ce-4b4c-98af-8952e3fa3479"/>
+
 
 <img width="300" alt="Nimo Assistant Screenshot 2" src="https://github.com/user-attachments/assets/2fcf9ee6-e57b-4757-98ab-debd727406c8" />
 
